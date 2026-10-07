@@ -10,6 +10,8 @@ row(1..4).
 col(1..4).
 num(1..4).
 
+subgrid(X,Y,G) :- row(X), col(Y), G = 1 + (((X-1)/2)*2) + (Y-1)/2.
+
 % for every combination of row x and col y, choose exactly 1 sudoku, where N is a valid number
 1 { sudoku(X,Y,N) : num(N) } 1 :- row(X), col(Y).
 
@@ -19,5 +21,6 @@ num(1..4).
 
 % ensures initial solutions exist
 sudoku(X,Y,N) :- initial(X,Y,N).
+
 
 #show sudoku/3.
