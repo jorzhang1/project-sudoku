@@ -6,4 +6,17 @@
 
 % Your implementation please...
 
+row(1..4).
+col(1..4).
+num(1..4).
+
+% for every combination of row x and col y, choose exactly 1 sudoku, where N is a valid number
+1 { sudoku(X,Y,N) : num(N) } 1 :- row(X), col(Y).
+
+% constraints: don't allow the same number in the same row or column
+:- sudoku(X,Y1,N), sudoku(X,Y2,N), Y1 != Y2.
+:- sudoku(X1,Y,N), sudoku(X2,Y,N), X1 != X2.
+
+sudoku(X,Y,N) :- initial(X,Y,N).
+
 #show sudoku/3.
